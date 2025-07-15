@@ -18,3 +18,4 @@ def callllm(prompt):
     )
     return response.choices[0].message.content
 
+
