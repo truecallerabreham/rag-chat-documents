@@ -1,8 +1,8 @@
-streamlit
-sentence-transformers
-chromadb
-PyMuPDF
+streamlit==1.35.0
+sentence-transformers==2.7.0
+chromadb==0.4.24
+PyMuPDF==1.23.23
 spacy==3.7.2
 groq
-python-dotenv
+python-dotenv==1.0.1
 https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1.tar.gz
