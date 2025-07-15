@@ -1,7 +1,7 @@
 from nltk.tokenize import sent_tokenize
 from utilis.file_utils import extract_text
 
-def chunk(filepath, chunksize=3, overlap=1):
+def chunk(filepath, chunksize=500, overlap=50):
     text = extract_text(filepath)
     sentences = sent_tokenize(text)
 
