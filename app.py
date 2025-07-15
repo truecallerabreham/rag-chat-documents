@@ -1,3 +1,6 @@
+import spacy
+import subprocess
+import importlib.util
 import streamlit as st
 from backend.chunker import chunk
 from backend.embedder import get_embeddings
@@ -5,7 +8,11 @@ from backend.vector_store import addfiles, search_vector_store
 from backend.retriever import callllm
 import os
 import spacy
+def download_spacy_model():
+    if not importlib.util.find_spec("en_core_web_sm"):
+        subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
 
+download_spacy_model()
 # Download spaCy model if not already installed
 spacy.cli.download("en_core_web_sm")
 
