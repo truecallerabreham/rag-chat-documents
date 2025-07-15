@@ -1,35 +1,27 @@
 import streamlit as st
-import spacy
 import os
+import nltk
+nltk.download('punkt')
 
+from backend.chunker import chunk
 from backend.embedder import get_embeddings
 from backend.vector_store import addfiles, search_vector_store
 from backend.retriever import callllm
-from backend.chunker import chunk
 
-# Ensure upload directory exists
 os.makedirs("data/uploads", exist_ok=True)
-
-# Load spaCy model with fallback to download if missing
-try:
-    nlp = spacy.load("en_core_web_sm")
-except OSError:
-    import spacy.cli
-    spacy.cli.download("en_core_web_sm")
-    nlp = spacy.load("en_core_web_sm")
 
 st.title("Chat with your Text/PDF File")
 
-uploaded_file = st.file_uploader("Upload a text or PDF file", type=["txt", "pdf"])
-
 chat_history = []
+
+uploaded_file = st.file_uploader("Upload a text or PDF file", type=["txt", "pdf"])
 
 if uploaded_file:
     filepath = os.path.join("data/uploads", uploaded_file.name)
     with open(filepath, "wb") as f:
         f.write(uploaded_file.getbuffer())
 
-    chunks = chunk(filepath, nlp)
+    chunks = chunk(filepath)
     vectors = get_embeddings(chunks)
     addfiles(chunks, vectors, filepath)
 
@@ -64,3 +56,4 @@ Answer:"""
 
 **Sources:** - {results['metadatas'][0]}
 """)
+
