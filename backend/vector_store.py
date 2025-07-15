@@ -19,3 +19,4 @@ def search_vector_store(query, k=3):
         n_results=k
     )
     return results
+
