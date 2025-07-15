@@ -1,9 +1,5 @@
-import spacy
-from utilis.file_utils import extract_text
-
-nlp = spacy.load("en_core_web_sm")
-
-def chunk(filepath, chunksize=3, overlap=1):
+def chunk(filepath, nlp, chunksize=3, overlap=1):
+    from utilis.file_utils import extract_text
     text = extract_text(filepath)
     doc = nlp(text)
     texts = [sent.text for sent in doc.sents]
