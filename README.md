@@ -59,4 +59,4 @@ Streamlit for the frontend UI
 
 PyMuPDF for parsing PDFs
 
-spaCy for sentence splitting
+nltk for sentence splitting
