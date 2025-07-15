@@ -1,16 +1,16 @@
-def chunk(filepath, nlp, chunksize=3, overlap=1):
-    from utilis.file_utils import extract_text
+from nltk.tokenize import sent_tokenize
+from utilis.file_utils import extract_text
+
+def chunk(filepath, chunksize=3, overlap=1):
     text = extract_text(filepath)
-    doc = nlp(text)
-    texts = [sent.text for sent in doc.sents]
+    sentences = sent_tokenize(text)
 
     chunks = []
     i = 0
-    while i < len(texts):
-        chunk_text = " ".join(texts[i:i+chunksize])
+    while i < len(sentences):
+        chunk_text = " ".join(sentences[i:i+chunksize])
         if chunk_text:
             chunks.append(chunk_text)
         i += chunksize - overlap
     return chunks
 
-  
