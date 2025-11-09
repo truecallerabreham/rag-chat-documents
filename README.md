@@ -1,4 +1,4 @@
-#RAG Chat with Your Documents
+# RAG Chat with Your Documents
 
 Upload any `.pdf` or `.txt` document and chat with it using advanced Retrieval-Augmented Generation (RAG). This project uses embeddings, vector search, and large language models (LLMs) to generate smart answers from your own documents.
 
@@ -17,7 +17,7 @@ Upload any `.pdf` or `.txt` document and chat with it using advanced Retrieval-A
 ---
 
 # Project Structure
-
+```
 rag-chat-documents/
 │
 ├── app.py # Main Streamlit app
@@ -36,7 +36,7 @@ rag-chat-documents/
 │ └── vector_db/ # ChromaDB vector storage
 ├── README.md
 └── .gitignore
-
+```
  Setup Instructions
 
  1. Clone the repo
